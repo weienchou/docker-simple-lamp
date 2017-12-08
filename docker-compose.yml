@@ -1,0 +1,8 @@
+web: 
+  image: httpd 
+
+  environment: 
+    - "constraint:node==father-0" 
+
+  ports: 
+    - "80:80"
