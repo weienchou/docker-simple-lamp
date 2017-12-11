@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# keystore
 docker-machine create -d virtualbox mother-0
 
 eval "$(docker-machine env mother-0)"
@@ -9,9 +10,9 @@ docker $(docker-machine config mother-0) run -d \
     -h "consul" \
     progrium/consul -server -bootstrap
 
-sleep 1s
+sleep 2s
 
-# web
+# manager
 docker-machine create \
 	-d virtualbox \
 	--swarm --swarm-image="swarm" --swarm-master \
@@ -20,9 +21,9 @@ docker-machine create \
 	--engine-opt="cluster-advertise=eth1:2376" \
 	father-0
 
-sleep 1s
+sleep 2s
 
-# php
+# web
 docker-machine create -d virtualbox \
 	--swarm --swarm-image="swarm:1.0.0" \
 	--swarm-discovery="consul://$(docker-machine ip mother-0):8500" \
@@ -30,9 +31,9 @@ docker-machine create -d virtualbox \
 	--engine-opt="cluster-advertise=eth1:2376" \
 	child-0
 
-sleep 1s
+sleep 2s
 
-# sql
+# php
 docker-machine create -d virtualbox \
 	--swarm --swarm-image="swarm:1.0.0" \
 	--swarm-discovery="consul://$(docker-machine ip mother-0):8500" \
@@ -40,7 +41,17 @@ docker-machine create -d virtualbox \
 	--engine-opt="cluster-advertise=eth1:2376" \
 	child-1
 
-sleep 1s
+sleep 2s
+
+# sql
+docker-machine create -d virtualbox \
+	--swarm --swarm-image="swarm:1.0.0" \
+	--swarm-discovery="consul://$(docker-machine ip mother-0):8500" \
+	--engine-opt="cluster-store=consul://$(docker-machine ip mother-0):8500" \
+	--engine-opt="cluster-advertise=eth1:2376" \
+	child-2
+
+sleep 2s
 
 eval $(docker-machine env --swarm father-0)
 

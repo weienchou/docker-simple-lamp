@@ -1,0 +1,4 @@
+FROM httpd:2.2
+ENV TZ=Asia/Taipei
+COPY ./conf/httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY ./www /var/www/html
