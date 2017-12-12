@@ -10,6 +10,7 @@ services:
         volumes:
             - ${APACHE_WWW_PATH}:/var/www/html
             - ${APACHE_HOST_LOG_PATH}:/var/log/apache2
+            - ${PHP_CONF_PATH}:/usr/local/etc/php/conf.d
         environment:
             - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
             - TZ=Asia/Taipei
