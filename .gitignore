@@ -1,0 +1,13 @@
+# Mac OS X Desktop Services Store
+.DS_Store
+
+# log
+log/apache/*.log
+log/apache/*.pid
+
+log/mysql/*.log
+
+log/php/*.log
+
+# www
+www
