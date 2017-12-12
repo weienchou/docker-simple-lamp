@@ -1,4 +1,4 @@
-# docker-lamp  
+# docker-simple-lamp  
 ```  
  conf   -----   config  
     apache  -   apache vhost  
@@ -11,8 +11,8 @@
  www    -----   website  
  ```  
   
- start the container  
- ./up.sh  
+ ##start the container  
+ `./up.sh`  
   
- close the container  
- ./down.sh  
+ ##close the container  
+ `./down.sh`  
