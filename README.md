@@ -1,7 +1,8 @@
 # docker-simple-lamp  
 ```  
  conf   -----   config  
-    apache  -   apache vhost  
+    apache  -   apache conf  
+    php     -   php conf
   
  log    -----   log  
     apache  -   apache log  
