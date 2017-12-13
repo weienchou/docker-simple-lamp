@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
     apache:
         build: .
@@ -10,7 +10,7 @@ services:
         volumes:
             - ${APACHE_WWW_PATH}:/var/www/html
             - ${APACHE_HOST_LOG_PATH}:/var/log/apache2
-            - ${APACHE_CONF_PATH}:/etc/apache2/conf
+            - ${APACHE_CONF_PATH}:/etc/apache2/custom-conf
             - ${PHP_CONF_PATH}:/usr/local/etc/php/conf.d
 
     mysql:

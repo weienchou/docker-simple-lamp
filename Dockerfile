@@ -15,6 +15,12 @@ RUN requirements="nano cron mysql-client-5.5 libpng12-dev libmcrypt-dev libmcryp
     && requirementsToRemove="libpng12-dev libmcrypt-dev libcurl3-dev libxml2-dev libpng12-dev libfreetype6-dev libjpeg62-turbo-dev" \
     && apt-get purge --auto-remove -y $requirementsToRemove
 
+## build custom conf
+RUN mkdir -p  /etc/apache2/custom-conf
+RUN echo "" >> /etc/apache2/apache2.conf \
+    && echo "# Include the configurations from the host machine" >> /etc/apache2/apache2.conf \
+    && echo "IncludeOptional custom-conf/*.conf" >> /etc/apache2/apache2.conf
+
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem -subj "/C=TW/ST=Taiwan/L=Taipei/O=Security/OU=Development/CN=local.host"
 
 RUN a2enmod rewrite

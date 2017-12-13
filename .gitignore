@@ -2,12 +2,9 @@
 .DS_Store
 
 # log
-log/apache/*.log
-log/apache/*.pid
-
-log/mysql/*.log
-
-log/php/*.log
+log/apache/*
+log/mysql/*
+log/php/*
 
 # www
 www
