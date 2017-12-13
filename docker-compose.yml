@@ -1,7 +1,7 @@
 version: '2'
 services:
     apache:
-        image: php:5.6-apache
+        build: .
         ports:
             - "${APACHE_HOST_HTTP_PORT}:80"
             - "${APACHE_HOST_HTTPS_PORT}:443"
@@ -10,10 +10,8 @@ services:
         volumes:
             - ${APACHE_WWW_PATH}:/var/www/html
             - ${APACHE_HOST_LOG_PATH}:/var/log/apache2
+            - ${APACHE_CONF_PATH}:/etc/apache2/conf
             - ${PHP_CONF_PATH}:/usr/local/etc/php/conf.d
-        environment:
-            - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
-            - TZ=Asia/Taipei
 
     mysql:
         image: mysql:5.6
