@@ -19,8 +19,9 @@ services:
         ports:
             - "${MYSQL_PORT}:3306"
         volumes:
-            - mysql-data:/var/lib/mysql
+            - ${MYSQL_DATA_PATH}:/var/lib/mysql
             - ${MYSQL_LOG_PATH}:/var/log/mysql
+            - ${MYSQL_CONF_PATH}:/etc/mysql/my.cnf
         command: ['mysqld', '--character-set-server=utf8']
         environment:
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -28,6 +29,3 @@ services:
             - MYSQL_USER=${MYSQL_USER}
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
             - TZ=Asia/Taipei
-
-volumes:
-    mysql-data:
