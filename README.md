@@ -15,7 +15,7 @@ mysql 5.6
 
 
 
-###資料夾結構
+### 資料夾結構
 
 ```
 conf           設定檔  
@@ -39,7 +39,7 @@ www            website 網站位置
 
 
 
-###.env (local folder)
+### .env (local folder)
 
 ```bash
 ### apache ######
@@ -75,10 +75,10 @@ MYSQL_DATA_PATH=./database				// mysql data path
 
 
 
-###start the container
+### start the container
 
  `./up.sh`  
 
-###close the container
+### close the container
 
  `./down.sh`  
