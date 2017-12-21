@@ -10,4 +10,8 @@ log/php/*
 www/
 
 # database
-database/
+ib*
+*.opt
+database/*.cnf
+database/mysql/*
+database/performance_schema/*
